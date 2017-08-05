@@ -172,3 +172,22 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+/* UI Components*/
+#spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ddd;
+  border-bottom-color: #2e7c31;
+  border-radius: 50%;
+  animation: revolve .5s linear infinite;
+}
+
+@keyframes revolve {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

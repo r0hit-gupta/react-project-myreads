@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 
 import Book from './Book';
 import Search from './Search';
+import Spinner from './Spinner';
+
 import * as BooksAPI from './BooksAPI';
 import './App.css';
 
 class Shelf extends React.Component {
   state = {
-    books: []
+    books: [],
+    loading: true
   };
 
   getAllBooks = () => {
@@ -28,7 +31,8 @@ class Shelf extends React.Component {
         );
       });
       this.setState({
-        books
+        books,
+        loading: false
       });
     });
   }
@@ -41,7 +45,6 @@ class Shelf extends React.Component {
   }
 
   componentDidMount() {
-    console.log("fired")
     this.getAllBooks();
   }
 
@@ -57,6 +60,7 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
+                {this.state.loading && <Spinner />}
                   {this.state.books.filter(
                     x => x.props.shelf === 'currentlyReading'
                   )}
@@ -67,6 +71,7 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
+                {this.state.loading && <Spinner />}
                   {this.state.books.filter(
                     x => x.props.shelf === 'wantToRead'
                   )}
@@ -77,6 +82,7 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
+                {this.state.loading && <Spinner />}
                   {this.state.books.filter(
                     x => x.props.shelf === 'read'
                   )}
