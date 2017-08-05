@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Book from './Book';
-import Search from './Search';
 import Spinner from './Spinner';
 
 import * as BooksAPI from './BooksAPI';
