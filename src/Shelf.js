@@ -11,26 +11,38 @@ class Shelf extends React.Component {
     books: []
   };
 
-  componentDidMount() {
+  getAllBooks = () => {
     BooksAPI.getAll().then(books => {
       console.log(books);
       books = books.map(book => {
         return (
           <Book
             key={book.id}
+            id={book.id}
             title={book.title}
             author={book.authors[0]}
             cover={book.imageLinks.smallThumbnail}
             shelf={book.shelf}
+            updateBook={this.updateBook}
           />
         );
       });
-      console.log(books);
       this.setState({
         books
       });
-      console.log(this.state.books);
     });
+  }
+
+  updateBook = (id, shelf) => {
+    BooksAPI.update(id, shelf).then(data => {
+      console.log(data);
+      this.getAllBooks();
+    });
+  }
+
+  componentDidMount() {
+    console.log("fired")
+    this.getAllBooks();
   }
 
   render() {
@@ -45,20 +57,30 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                  {this.state.books}
+                  {this.state.books.filter(
+                    x => x.props.shelf === 'currentlyReading'
+                  )}
                 </ol>
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
-                <ol className="books-grid" />
+                <ol className="books-grid">
+                  {this.state.books.filter(
+                    x => x.props.shelf === 'wantToRead'
+                  )}
+                </ol>
               </div>
             </div>
             <div className="bookshelf">
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
-                <ol className="books-grid" />
+                <ol className="books-grid">
+                  {this.state.books.filter(
+                    x => x.props.shelf === 'read'
+                  )}
+                </ol>
               </div>
             </div>
           </div>
