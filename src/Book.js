@@ -3,15 +3,15 @@ import React from 'react';
 class Book extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {shelf: this.props.shelf};
+    this.state = { shelf: this.props.shelf };
   }
-  updateBook = (event) => {
+  updateBook = event => {
     const newShelf = event.target.value;
     this.props.updateBook(this.props.id, newShelf);
     this.setState({
       shelf: newShelf
-    })
-  }
+    });
+  };
   render() {
     return (
       <li>
@@ -26,10 +26,7 @@ class Book extends React.Component {
               }}
             />
             <div className="book-shelf-changer">
-              <select
-                value={this.state.shelf}
-                onChange={this.updateBook}
-              >
+              <select value={this.state.shelf} onChange={this.updateBook}>
                 <option disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>

@@ -35,14 +35,14 @@ class Shelf extends React.Component {
         loading: false
       });
     });
-  }
+  };
 
   updateBook = (id, shelf) => {
     BooksAPI.update(id, shelf).then(data => {
       console.log(data);
       this.getAllBooks();
     });
-  }
+  };
 
   componentDidMount() {
     this.getAllBooks();
@@ -60,7 +60,7 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Currently Reading</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                {this.state.loading && <Spinner />}
+                  {this.state.loading && <Spinner />}
                   {this.state.books.filter(
                     x => x.props.shelf === 'currentlyReading'
                   )}
@@ -71,10 +71,8 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Want to Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                {this.state.loading && <Spinner />}
-                  {this.state.books.filter(
-                    x => x.props.shelf === 'wantToRead'
-                  )}
+                  {this.state.loading && <Spinner />}
+                  {this.state.books.filter(x => x.props.shelf === 'wantToRead')}
                 </ol>
               </div>
             </div>
@@ -82,10 +80,8 @@ class Shelf extends React.Component {
               <h2 className="bookshelf-title">Read</h2>
               <div className="bookshelf-books">
                 <ol className="books-grid">
-                {this.state.loading && <Spinner />}
-                  {this.state.books.filter(
-                    x => x.props.shelf === 'read'
-                  )}
+                  {this.state.loading && <Spinner />}
+                  {this.state.books.filter(x => x.props.shelf === 'read')}
                 </ol>
               </div>
             </div>
