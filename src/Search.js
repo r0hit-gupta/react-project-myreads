@@ -37,9 +37,9 @@ class Search extends React.Component {
             loading: false
           });
         } else {
-          books = books.map(book =>
+          books = books.map((book, i) =>
             <Book
-              key={book.id}
+              key={i}
               id={book.id}
               title={book.title}
               author={book.authors}
