@@ -37,17 +37,6 @@ class Search extends React.Component {
             loading: false
           });
         } else {
-          books = books.map((book, i) =>
-            <Book
-              key={i}
-              id={book.id}
-              title={book.title}
-              author={book.authors}
-              cover={book.imageLinks.smallThumbnail}
-              shelf={book.shelf}
-              updateBook={this.updateBook}
-            />
-          );
           this.setState({
             resultFound: true,
             loading: false,
@@ -80,7 +69,17 @@ class Search extends React.Component {
               <span>
                 No result found. Please try again with some other query.
               </span>}
-            {this.state.books}
+            {this.state.books.map(book =>
+              <Book
+                key={book.id}
+                id={book.id}
+                title={book.title}
+                author={book.authors}
+                cover={book.imageLinks.smallThumbnail}
+                shelf={book.shelf}
+                updateBook={this.updateBook}
+              />
+            )}
           </ol>
         </div>
       </div>
