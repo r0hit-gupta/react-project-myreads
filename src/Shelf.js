@@ -22,7 +22,7 @@ class Shelf extends React.Component {
             key={book.id}
             id={book.id}
             title={book.title}
-            author={book.authors[0]}
+            author={book.authors}
             cover={book.imageLinks.smallThumbnail}
             shelf={book.shelf}
             updateBook={this.updateBook}
