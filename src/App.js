@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 
-import Shelf from './Shelf';
+import Library from './Library';
 import Search from './Search';
 
 import './App.css';
@@ -12,7 +12,7 @@ class BooksApp extends React.Component {
       <BrowserRouter>
         <div className="app">
           <Route path="/search" component={Search} />
-          <Route exact path="/" component={Shelf} />
+          <Route exact path="/" component={Library} />
         </div>
       </BrowserRouter>
     );
